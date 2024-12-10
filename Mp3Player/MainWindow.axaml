@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Mp3Player.MainWindow"
+        Title="Mp3Player">
+    <Grid RowDefinitions="*, 90">
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="_Open">
+                    <MenuItem x:Name="MiOpenMp3" PointerPressed="MiOpenMp3_OnPointerPressed" Header="_Open MP3 File"></MenuItem>
+                </MenuItem>
+            </Menu>
+            
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+            <StackPanel Spacing="20" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Width="60" x:Name="LabelTimeElapsed" Content="00:00"/>
+                <Slider PointerReleased="SliderSongPosition_OnPointerReleased" Width="600" Minimum="0" x:Name="SliderSongPosition" TickFrequency="1"/>
+                <Label Width="60" x:Name="LabelTotalTime" Content="00:00"/>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0" HorizontalAlignment="Center" Spacing="10" Orientation="Horizontal" >
+                <Button x:Name="BtnPlayMusic" IsEnabled="False" Click="BtnPlayMusic_OnClick" Width="30" Content="▶️"></Button>
+                <Button x:Name="BtnStopMusic" IsEnabled="False" Click="BtnStopMusic_OnClick" Width="30" Content="⏹️"></Button>
+                <Button x:Name="BtnPauseMusic" IsEnabled="False" Click="BtnPauseMusic_OnClick" Width="30" Content="⏸️"></Button>
+                <StackPanel Spacing="5" Orientation="Horizontal">
+                    <TextBlock Width="20" x:Name="LabelMusicVolume" VerticalAlignment="Center" Text="100"></TextBlock>
+                    <Slider PointerWheelChanged="SliderSongVolume_OnPointerWheelChanged" ValueChanged="SliderSongVolume_OnValueChanged" x:Name="SliderSongVolume" Minimum="0" TickFrequency="1" Maximum="100" Width="50"></Slider>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>
